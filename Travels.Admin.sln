@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34219.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EDF2A48E-B3AA-4675-B8A7-92A2409F4A08}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E567820A-8946-4E9F-AC45-356C43D36D61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documentation", "documentation", "{788399A8-F017-4122-AAF9-4E0EC63F3EA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelsAdmin.Web", "src\TravelsAdmin.Web\TravelsAdmin.Web.csproj", "{91F964B4-0EF8-4754-81B8-B654821C4DB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91F964B4-0EF8-4754-81B8-B654821C4DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F964B4-0EF8-4754-81B8-B654821C4DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F964B4-0EF8-4754-81B8-B654821C4DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F964B4-0EF8-4754-81B8-B654821C4DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{91F964B4-0EF8-4754-81B8-B654821C4DB1} = {E567820A-8946-4E9F-AC45-356C43D36D61}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9F013C3-4856-4811-B77B-606C70CA5A81}
+	EndGlobalSection
+EndGlobal
