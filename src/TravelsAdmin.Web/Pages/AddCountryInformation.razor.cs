@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Text;
 using System.Text.Json;
 using TravelsAdmin.Web.Data;
 
@@ -14,6 +15,7 @@ public partial class AddCountryInformation
     private CountryInfoDto countryInfo = new();
 
     public bool IsBusy { get; set; }
+    public bool IsBusySaving { get; set; }
 
     [Inject]
     public IHttpClientFactory? _httpClientFactory { get; set; }
@@ -62,6 +64,47 @@ public partial class AddCountryInformation
             IsBusy = false;
         }
     }
+
+    private async Task SaveCountryInfoAsync()
+    {
+        if (IsBusySaving)
+        {
+            return;
+        }
+
+        IsBusySaving = true;
+
+        try
+        {
+            // Create an HttpContent object
+            HttpContent httpContent = new StringContent(JsonSerializer.Serialize(countryInfo), Encoding.UTF8, "application/json");
+
+            // Make the POST request
+            var client = _httpClientFactory!.CreateClient("DotNetCountriesApi");
+            var response = await client.PostAsync("api/countries", httpContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                //isFormSubmitted = true;
+                ErrorMessage = null;
+                StateHasChanged();
+            }
+            else
+            {
+                // Handle API error
+            }
+        }
+        catch (Exception ex)
+        {
+            SuccessMessage = null;
+            ErrorMessage = $"Error while adding country information: {ex.Message}";
+        }
+        finally
+        {
+            IsBusySaving = false;
+        }
+    }
+
 }
 
 

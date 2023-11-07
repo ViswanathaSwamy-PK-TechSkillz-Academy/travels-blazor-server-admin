@@ -24,7 +24,7 @@ else
                 <button type="submit" @onclick="GetCountryInfoAsync" class="btn btn-primary mt-2" disabled="@IsBusy">Get Information</button>
                 @if (IsBusy)
                 {
-                    <p>Please wait while we fetch data from Azure Open AI.</p>
+                    <p>Please wait while we FETCH data from Azure Open AI.</p>
                 }
             </div>
         </div>
@@ -52,6 +52,17 @@ else
                 <ValidationMessage For="@(() => countryInfo.NationalBird)" />
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="mb-3">
+                <button type="submit" @onclick="SaveCountryInfoAsync" class="btn btn-primary mt-2" disabled="@IsBusy">Save Information</button>
+                @if (IsBusySaving)
+                {
+                    <p>Please wait while we SAVE data.</p>
+                }
+            </div>
+        </div>
+
     </EditForm>
 }
 
