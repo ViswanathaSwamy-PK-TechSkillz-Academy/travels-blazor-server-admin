@@ -7,7 +7,7 @@ namespace TravelsAdmin.Web.Pages;
 public partial class AddCountryInformation
 {
 
-    private AddCountryInformationDto addCountryInformationDto = new();
+    //private AddCountryInformationDto addCountryInformationDto = new();
     private bool isFormSubmitted = false;
     private string? SuccessMessage { get; set; }
     private string? ErrorMessage { get; set; }
@@ -35,7 +35,7 @@ public partial class AddCountryInformation
         {
             var client = _httpClientFactory!.CreateClient("FlaskCountriesAPI");
 
-            var response = await client.GetAsync($"api/getcountryinfo?country_name={addCountryInformationDto.CountryName}");
+            var response = await client.GetAsync($"api/getcountryinfo?country_name={countryInfo.CountryName}");
 
             if (response.IsSuccessStatusCode)
             {
