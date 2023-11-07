@@ -22,7 +22,7 @@ public partial class AddCountryInformation
     {
     }
 
-    private async Task HandleFormSubmit()
+    private async Task GetCountryInfoAsync()
     {
         if (IsBusy)
         {
