@@ -22,13 +22,12 @@ else
                 <InputText id="countryName" class="form-control" @bind-Value="@countryInfo.CountryName" />
                 <ValidationMessage For="@(() => countryInfo.CountryName)" />
                 <button type="submit" class="btn btn-primary mt-2" disabled="@IsBusy">Get Information</button>
+                @if (IsBusy)
+                {
+                    <p>Please wait while we fetch data from Azure Open AI.</p>
+                }
             </div>
         </div>
-
-        @if (IsBusy)
-        {
-            <p>Please wait while we fetch data from Azure Open AI.</p>
-        }
 
         <div class="form-group">
             <div class="mb-3">
