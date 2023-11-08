@@ -6,14 +6,6 @@
 
 @if (isFormSubmitted)
 {
-    @*     <p>@addCountryInformationDto.CountryName Information added successfully!</p>
-
-    @if (SuccessMessage is not null)
-    {
-        <br />
-        <div class="alert alert-success">@SuccessMessage</div>
-    }
- *@
     @if (ErrorMessage is not null)
     {
         <br />
@@ -22,22 +14,20 @@
 }
 else
 {
-    <EditForm Model="@addCountryInformationDto" OnValidSubmit="HandleFormSubmit">
+    <EditForm Model="@countryInfo">
         <DataAnnotationsValidator />
         <div class="form-group">
             <div class="mb-3">
                 <label for="countryName">Country Name:</label>
-                <InputText id="countryName" class="form-control" @bind-Value="@addCountryInformationDto.CountryName" />
-                <ValidationMessage For="@(() => addCountryInformationDto.CountryName)" />
+                <InputText id="countryName" class="form-control" @bind-Value="@countryInfo.CountryName" />
+                <ValidationMessage For="@(() => countryInfo.CountryName)" />
+                <button type="submit" @onclick="GetCountryInfoAsync" class="btn btn-primary mt-2" disabled="@IsBusy">Get Information</button>
+                @if (IsBusy)
+                {
+                    <p>Please wait while we FETCH data from Azure Open AI.</p>
+                }
             </div>
-
         </div>
-
-        @if (IsBusy)
-        {
-            <p>Please wait while we fetch data from Azure Open AI.</p>
-        }
-        <button type="submit" class="btn btn-primary" disabled="@IsBusy">Get Information</button>
 
         <div class="form-group">
             <div class="mb-3">
@@ -62,6 +52,17 @@ else
                 <ValidationMessage For="@(() => countryInfo.NationalBird)" />
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="mb-3">
+                <button type="submit" @onclick="SaveCountryInfoAsync" class="btn btn-primary mt-2" disabled="@IsBusy">Save Information</button>
+                @if (IsBusySaving)
+                {
+                    <p>Please wait while we SAVE data.</p>
+                }
+            </div>
+        </div>
+
     </EditForm>
 }
 
